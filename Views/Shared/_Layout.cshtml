@@ -1,0 +1,49 @@
+﻿@using WebApplication10.Models
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+	<nav class="ml-3 navbar navbar-expand-sm bg-dark navbar-dark">
+
+		<a class="navbar-brand" style="padding-left: 10px !important" href="#"> Logo </a>
+
+		<ul class="navbar-nav">
+			@if (!WebApplication10.Models.User.IsLoggedIn())
+			{
+				<li class="nav-item">
+					<a class="nav-link" href='@Url.Action("Index", "Auth")'> Login </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href='@Url.Action("Registration", "Auth")'> Registration</a>
+				</li>
+			}
+			else
+			{
+				<li class="nav-item">
+					<a class="nav-link" href="#"> Signout </a>
+				</li>
+			}
+		</ul>
+	</nav>
+
+
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	<script src="~/Scripts/bootstrap.js"></script>
+	@RenderSection("scripts", required: false)
+</body>
+</html>

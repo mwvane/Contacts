@@ -1,0 +1,36 @@
+﻿@model WebApplication10.Models.Contact
+<div class="mt-5">
+	<div class="card shadow border-0">
+		<div class="card-header p-3">
+			New Contact
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-6">
+					<form method="post" action='@Url.Action("CreateContact")'>
+						@Html.AntiForgeryToken()
+						<div>
+							@Html.LabelFor(c => c.Avatar)
+							<input type="file" class="form-control" name="Avatar" />
+							@Html.ValidationMessageFor(c => c.Avatar, null, new { @class = "text-danger" })
+						</div>
+						<div>
+							@Html.LabelFor(c => c.Name)
+							@Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+							@Html.ValidationMessageFor(c => c.Name, null, new { @class = "text-danger" })
+						</div>
+						<div>
+							@Html.LabelFor(c => c.PhoneNumber)
+							@Html.TextBoxFor(c => c.PhoneNumber, new { @class = "form-control" })
+							@Html.ValidationMessageFor(c => c.PhoneNumber, null, new { @class = "text-danger" })
+						</div>
+						<div class="mt-4">
+							<button class="btn btn-primary"> Submit </button>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
